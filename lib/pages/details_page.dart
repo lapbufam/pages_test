@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:pages_test/models/Movie.dart';
 
 class DetailsPage extends StatelessWidget {
@@ -12,14 +13,16 @@ class DetailsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(movieData.name),
         actions: <Widget>[
-          IconButton(
-            onPressed: () {},
-            icon: movieData.isFavourite
-                ? Icon(
-                    Icons.favorite,
-                    color: Colors.white,
-                  )
-                : Icon(Icons.favorite_border),
+          Observer(
+            builder: (_) => IconButton(
+              onPressed: movieData.toggleFavorite,
+              icon: movieData.isFavourite
+                  ? Icon(
+                      Icons.favorite,
+                      color: Colors.white,
+                    )
+                  : Icon(Icons.favorite_border),
+            ),
           )
         ],
       ),

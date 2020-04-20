@@ -22,6 +22,6 @@ abstract class _Movie with Store {
 
   @action
   void toggleFavorite() {
-    this.isFavourite = !this.isFavourite;
+    this.isFavourite = !(this.isFavourite);
   }
 }
